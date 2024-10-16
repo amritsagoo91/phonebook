@@ -22,18 +22,18 @@
     },
     {
       "id": 5,
-<<<<<<< HEAD
       "name": "Amrit",
       "number": "3069996844"
-=======
-      "name": "Amrit ",
-      "number": "306-999-6844"
->>>>>>> 4d6f9cf (2.12: The Phonebook step 7)
     },
     {
       "id": 6,
       "name": "Jaspreet",
       "number": "778-123-4567"
+    },
+    {
+      "id": 7,
+      "name": "Sargun",
+      "number": "123-456-7890"
     }
   ]
 }
