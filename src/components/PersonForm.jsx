@@ -6,10 +6,11 @@ function PersonForm({ addPerson, persons }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const exist = persons.some(person => person.name.toLowerCase().trim() === newName.toLowerCase().trim())
+
         if (exist) {
             alert(`${newName} is already exist`)
         } else {
-            const newPersonObject = { name: newName, number: newNumber, id: persons.length + 1 }
+            const newPersonObject = { name: newName, number: newNumber, id: String(persons.length + 1) }
             addPerson(newPersonObject)
             setNewName('')
             setNewNumber('')
