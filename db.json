@@ -1,19 +1,9 @@
 {
   "persons": [
     {
-      "id": "1",
-      "name": "Linus Torvalds",
-      "number": "458-895-7895"
-    },
-    {
       "id": "2",
       "name": "Dennis Richie",
       "number": "123-785-4758"
-    },
-    {
-      "id": "4",
-      "name": "Amrit Singh",
-      "number": "458-784-8562"
     },
     {
       "id": "5",
@@ -39,6 +29,21 @@
       "id": "9",
       "name": "Stephen Hawking",
       "number": "854-869-8567"
+    },
+    {
+      "id": "72af",
+      "name": "Amrit Singh",
+      "number": "734-090-0776"
+    },
+    {
+      "id": "ab7b",
+      "name": "Linus Torvalds",
+      "number": "412-845-9685"
+    },
+    {
+      "id": "adad",
+      "name": "Arya Bhata",
+      "number": "457-859-4125"
     }
   ]
 }

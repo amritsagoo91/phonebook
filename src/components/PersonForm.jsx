@@ -1,16 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
-function PersonForm({ addPerson, persons }) {
+
+function PersonForm({ addPerson, persons, updatePerson }) {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault();
-        const exist = persons.some(person => person.name.toLowerCase().trim() === newName.toLowerCase().trim())
+        let exist = persons.find(person => person.name.toLowerCase().trim() === newName.toLowerCase().trim())
 
         if (exist) {
-            alert(`${newName} is already exist`)
+            if (window.confirm(`${newName} is already added to phonebok,replace the new number with old number`)) {
+                const updatePersonObj = { ...exist, id: exist.id, name: newName, number: newNumber }
+                updatePerson(updatePersonObj)
+                setNewName('')
+                setNewNumber('')
+            }
         } else {
-            const newPersonObject = { name: newName, number: newNumber, id: String(persons.length + 1) }
+            const newPersonObject = { name: newName, number: newNumber }
             addPerson(newPersonObject)
             setNewName('')
             setNewNumber('')

@@ -21,8 +21,10 @@ const App = () => {
   const addPerson = (newPerson) => {
 
     service.create(newPerson).then(responseNew => {
-      setPersons(persons.concat(responseNew))
       setFilterList(persons.concat(responseNew))
+      setPersons(persons.concat(responseNew))
+
+
     }
     )
   }
@@ -33,19 +35,29 @@ const App = () => {
       if (window.confirm(`Do you really want to delete ${findPerson.name}`)) {
 
         axios.delete(`http://localhost:3001/persons/${findPerson.id}`).then(response => {
-          setPersons(prevPersons => prevPersons.filter(person => person.id !== id));
           setFilterList(prevFilterList => prevFilterList.filter(person => person.id !== id));
+          setPersons(prevFilterList => prevFilterList.filter(person => person.id !== id));
 
 
         })
       }
-
-
-
     } catch (error) {
       console.error("Error deleting person:", error);
     }
   };
+
+  const updatePerson = (obj) => {
+    service.update(obj.id, obj).then(updateData => {
+      setFilterList(persons.map(person => person.id === obj.id ? updateData : person))
+      setPersons(persons.map(person => person.id === obj.id ? updateData : person))
+
+
+
+    })
+    console.log(obj)
+  }
+
+
 
   const handleFilter = (filterName) => {
     const filteredList_ = persons.filter(person => person.name.toLowerCase().includes(filterName.toLowerCase()))
@@ -57,7 +69,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter handleFilter={handleFilter} />
       <h1>add new</h1>
-      <PersonForm addPerson={addPerson} persons={persons} />
+      <PersonForm addPerson={addPerson} persons={persons} setPersons={setPersons} updatePerson={updatePerson} />
       <h2>Numbers</h2>
       <Persons filterList={filterList} deletePerson={deletePerson} />
     </div>
