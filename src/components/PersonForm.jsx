@@ -28,12 +28,11 @@ function PersonForm({ addPerson, persons, updatePerson }) {
                 <div>
                     name: <input value={newName} onChange={e => setNewName(e.target.value)} />
                 </div>
-                <div>
-                    number: <input value={newNumber} onChange={e => setNewNumber(e.target.value)} />
-                </div>
-                <div>
-                    <button type="submit">add</button>
-                </div>
+                <br />
+                number: <input value={newNumber} onChange={e => setNewNumber(e.target.value)} />
+                <br />
+                <button type="submit">add</button>
+
             </form>
         </>
     )
