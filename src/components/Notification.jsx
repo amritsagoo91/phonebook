@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 function Notification({ message }) {
+
     if (message === null) {
         return
     }

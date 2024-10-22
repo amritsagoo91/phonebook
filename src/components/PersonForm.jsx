@@ -17,9 +17,13 @@ function PersonForm({ addPerson, persons, updatePerson }) {
             }
         } else {
             const newPersonObject = { name: newName, number: newNumber }
-            addPerson(newPersonObject)
-            setNewName('')
-            setNewNumber('')
+            if (newPersonObject.name === '' || newPersonObject === null) {
+                alert("Please add name")
+            } else {
+                addPerson(newPersonObject)
+                setNewName('')
+                setNewNumber('')
+            }
         }
     }
     return (

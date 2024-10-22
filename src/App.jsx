@@ -5,13 +5,14 @@ import Persons from './components/Persons'
 import Notification from './components/Notification'
 import service from './services/numbers'
 import axios from 'axios'
-
-//const Person = ({ person }) => <p>{person.name} {person.number}</p>
+import './index.css'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [filterList, setFilterList] = useState(persons)
   const [message, setMessage] = useState(null)
+
+
 
   useEffect(() => {
     service.getAll().then(initialData => {
@@ -36,20 +37,22 @@ const App = () => {
   }
 
   const deletePerson = async (id) => {
-    try {
-      const findPerson = filterList.find(person => person.id == id)
-      if (window.confirm(`Do you really want to delete ${findPerson.name}`)) {
 
-        axios.delete(`http://localhost:3001/persons/${findPerson.id}`).then(response => {
-          setFilterList(prevFilterList => prevFilterList.filter(person => person.id !== id));
-          setPersons(prevFilterList => prevFilterList.filter(person => person.id !== id));
+    const findPerson = filterList.find(person => person.id == id)
+    if (window.confirm(`Do you really want to delete ${findPerson.name}`)) {
 
+      axios.delete(`http://localhost:3001/persons/${findPerson.id}`).then(response => {
+        setFilterList(prevFilterList => prevFilterList.filter(person => person.id !== id));
+        setPersons(prevFilterList => prevFilterList.filter(person => person.id !== id));
+      }).catch(error => {
 
-        })
-      }
-    } catch (error) {
-      console.error("Error deleting person:", error);
+        //console.error("Error deleting person:", error);
+        setMessage(`Information of'${findPerson.name}' has already been removed from server`)
+        setTimeout(() => setMessage(null), 2000)
+      })
     }
+
+
   };
 
   const updatePerson = (obj) => {
@@ -60,10 +63,12 @@ const App = () => {
       setTimeout(() => {
         setMessage(null)
       }, 2000)
+    }).catch(error => {
 
-
+      // console.error("Error deleting person:", error);
+      setMessage(`Information of'${obj.name}' has already been removed from server`)
+      setTimeout(() => setMessage(null), 2000)
     })
-    console.log(obj)
   }
 
 

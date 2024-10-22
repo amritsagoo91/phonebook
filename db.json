@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "id": "2",
-      "name": "Dennis Richie",
-      "number": "123-785-4758"
-    },
-    {
       "id": "5",
       "name": "Albert Einstein",
       "number": "784-852-4562"
@@ -31,19 +26,14 @@
       "number": "784-859-1234"
     },
     {
-      "id": "72af",
-      "name": "Amrit Singh",
-      "number": "734-090-0776"
-    },
-    {
       "id": "ab7b",
       "name": "Linus Torvalds",
       "number": "412-845-9685"
     },
     {
-      "id": "e164",
-      "name": "Arya Bhata",
-      "number": "754-568-7485"
+      "id": "62f5",
+      "name": "Amrit Singh",
+      "number": "306-999-6844"
     }
   ]
 }
