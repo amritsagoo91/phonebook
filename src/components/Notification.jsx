@@ -1,12 +1,12 @@
 import { useState } from "react"
 
-function Notification({ message }) {
+function Notification({ message, green }) {
 
     if (message === null) {
         return
     }
     return (
-        <div className='msg'>
+        <div className={green ? "success" : "error"}>
             {message}
         </div>
     )

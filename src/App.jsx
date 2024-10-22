@@ -11,6 +11,7 @@ const App = () => {
   const [persons, setPersons] = useState([])
   const [filterList, setFilterList] = useState(persons)
   const [message, setMessage] = useState(null)
+  const [green, setGreen] = useState(true)
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
     service.create(newPerson).then(responseNew => {
       setFilterList(persons.concat(responseNew))
       setPersons(persons.concat(responseNew))
+      setGreen(true)
       setMessage(`${newPerson.name} successfully added`)
       setTimeout(() => {
         setMessage(null)
@@ -47,6 +49,7 @@ const App = () => {
       }).catch(error => {
 
         //console.error("Error deleting person:", error);
+        setGreen(false)
         setMessage(`Information of'${findPerson.name}' has already been removed from server`)
         setTimeout(() => setMessage(null), 2000)
       })
@@ -66,6 +69,7 @@ const App = () => {
     }).catch(error => {
 
       // console.error("Error deleting person:", error);
+      setGreen(false)
       setMessage(`Information of'${obj.name}' has already been removed from server`)
       setTimeout(() => setMessage(null), 2000)
     })
@@ -81,7 +85,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={message} />
+      <Notification message={message} green={green} />
       <Filter handleFilter={handleFilter} />
       <h1>add new</h1>
       <PersonForm addPerson={addPerson} persons={persons} setPersons={setPersons} updatePerson={updatePerson} />
